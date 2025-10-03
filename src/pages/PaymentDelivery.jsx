@@ -23,10 +23,19 @@
             <div className="glass p-6">
               <h3 className="text-white font-semibold mb-3"> Самовивіз</h3>
               <p className="text-white/80 mb-2">Безкоштовно</p>
-              <p className="text-white/80">
-                м. Одеса, вул. Дерибасівська, 15<br/>
-                Пн-Нд: 9:00 - 21:00
-              </p>
+              <div className="text-white/80 space-y-3">
+                <div>
+                  <strong>Адреси в Одесі:</strong><br/>
+                  • вул. Михайла Комарова, 10 (через АЗК ОККО)<br/>
+                  • просп. Шевченка, 19/21<br/>
+                  • вул. Академіка Корольова, 43Е<br/>
+                  • Чубаївська, 1, ЖК «Ітака»
+                </div>
+                <div>
+                  <strong>Телефон:</strong> +380637027770<br/>
+                  <strong>Графік роботи:</strong> Пн-Нд: 9:00 - 21:00
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -1,6 +1,8 @@
 
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import heroVideo from '../assets/hero.mp4'
+import heroPoster from '../assets/hero-poster.webp'
 
 export default function Hero(){
   const [mounted, setMounted] = useState(false)
@@ -17,27 +19,27 @@ export default function Hero(){
         {!videoError ? (
           <video
             className="w-full h-full object-cover"
-            src={`${import.meta.env.BASE_URL}video/hero.mp4?v=2`}
-            poster={`${import.meta.env.BASE_URL}img/hero-poster.webp`}
+            src={heroVideo}
+            poster={heroPoster}
             autoPlay
             muted
             playsInline
             loop
             preload="metadata"
             onError={(e) => {
-              console.error('Video load error:', e, `${import.meta.env.BASE_URL}video/hero.mp4`)
+              console.error('Video load error:', e?.currentTarget?.src)
               setVideoError(true)
             }}
             onLoadedData={() => console.log('Video loaded successfully')}
             aria-label="Відео-фон з красивими квітами GURT"
           >
-            <source src={`${import.meta.env.BASE_URL}video/hero.mp4?v=2`} type="video/mp4" />
+            <source src={heroVideo} type="video/mp4" />
             Ваш браузер не підтримує відео.
           </video>
         ) : (
           <div 
             className="w-full h-full bg-cover bg-center bg-no-repeat"
-            style={{backgroundImage: `url(${import.meta.env.BASE_URL}img/hero-poster.webp)`}}
+            style={{backgroundImage: `url(${heroPoster})`}}
             aria-label="Фон з красивими квітами GURT"
           />
         )}
