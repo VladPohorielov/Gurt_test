@@ -1,4 +1,10 @@
 
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-export default defineConfig({ plugins: [react()] })
+
+// Deploy note: when publishing to GitHub Pages under the repository
+// https://github.com/VladPohorielov/Gurt_test set base to '/Gurt_test/'
+export default defineConfig({
+	base: '/Gurt_test/',
+	plugins: [react()]
+})
