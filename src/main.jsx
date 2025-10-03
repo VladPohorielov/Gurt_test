@@ -10,7 +10,7 @@ const root = createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <CartProvider>
-      <BrowserRouter basename="/Gurt_test">
+      <BrowserRouter>
         <App />
       </BrowserRouter>
     </CartProvider>
