@@ -52,7 +52,7 @@ export default function OrderSuccess() {
             <h3 className="text-brand-yellow font-semibold mb-3">Доставка</h3>
             <div className="space-y-2 text-white/80">
               <p><span className="text-white">Тип:</span> {
-                formData?.deliveryType === 'delivery' ? 'Доставка по Києву' :
+                formData?.deliveryType === 'delivery' ? 'Доставка по Одесі' :
                 formData?.deliveryType === 'express' ? 'Експрес доставка' : 'Самовивіз'
               }</p>
               {formData?.address && (

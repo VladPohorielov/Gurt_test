@@ -134,7 +134,7 @@ export default function Checkout() {
             
             <div className="space-y-3 mb-4">
               {[
-                { value: 'delivery', label: 'Доставка по Києву', price: '150 грн' },
+                { value: 'delivery', label: 'Доставка по Одесі', price: '150 грн' },
                 { value: 'express', label: 'Експрес доставка', price: '300 грн' },
                 { value: 'pickup', label: 'Самовивіз', price: 'Безкоштовно' }
               ].map(option => (

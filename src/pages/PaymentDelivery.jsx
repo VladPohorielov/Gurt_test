@@ -9,7 +9,7 @@
           
           <div className="space-y-6">
             <div className="glass p-6">
-              <h3 className="text-white font-semibold mb-3"> Доставка по Києву</h3>
+              <h3 className="text-white font-semibold mb-3"> Доставка по Одесі</h3>
               <p className="text-white/80 mb-2">Вартість: 150 грн</p>
               <p className="text-white/80">Час доставки: 2-4 години</p>
             </div>
@@ -24,7 +24,7 @@
               <h3 className="text-white font-semibold mb-3"> Самовивіз</h3>
               <p className="text-white/80 mb-2">Безкоштовно</p>
               <p className="text-white/80">
-                м. Київ, вул. Квіткова, 15<br/>
+                м. Одеса, вул. Дерибасівська, 15<br/>
                 Пн-Нд: 9:00 - 21:00
               </p>
             </div>
