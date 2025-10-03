@@ -6,5 +6,8 @@ import react from '@vitejs/plugin-react'
 // https://github.com/VladPohorielov/Gurt_test set base to '/Gurt_test/'
 export default defineConfig({
 	base: '/Gurt_test/',
-	plugins: [react()]
+	plugins: [react()],
+	build: {
+		outDir: 'docs'
+	}
 })
