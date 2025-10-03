@@ -230,9 +230,8 @@ VITE_EMAIL=hello@gurt.flowers
 
 Если возникли вопросы или нужна помощь:
 
-- 💬 **Telegram**: [@gurt_flowers](https://t.me/gurt_flowers)
-- ✉️ **Email**: hello@gurt.flowers
-- 📞 **Телефон**: +38 (097) 123-45-67
+- 💬 **Telegram**: @Vladislav_Pohorielov
+- 📞 **Телефон**: +380 99 941 88 76
 
 ---
 
