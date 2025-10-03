@@ -1,8 +1,6 @@
 
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import heroVideo from '../assets/hero.mp4'
-import heroPoster from '../assets/hero-poster.webp'
 
 export default function Hero(){
   const [mounted, setMounted] = useState(false)
@@ -14,35 +12,12 @@ export default function Hero(){
 
   return (
     <header className="relative mx-auto max-w-6xl text-center overflow-hidden rounded-2xl min-h-[80vh]">
-      {/* Video BG - Instagram Reels Style */}
+      {/* Temporary fallback background */}
       <div className="absolute inset-0 -z-10">
-        {!videoError ? (
-          <video
-            className="w-full h-full object-cover"
-            src={heroVideo}
-            poster={heroPoster}
-            autoPlay
-            muted
-            playsInline
-            loop
-            preload="metadata"
-            onError={(e) => {
-              console.error('Video load error:', e?.currentTarget?.src)
-              setVideoError(true)
-            }}
-            onLoadedData={() => console.log('Video loaded successfully')}
-            aria-label="Відео-фон з красивими квітами GURT"
-          >
-            <source src={heroVideo} type="video/mp4" />
-            Ваш браузер не підтримує відео.
-          </video>
-        ) : (
-          <div 
-            className="w-full h-full bg-cover bg-center bg-no-repeat"
-            style={{backgroundImage: `url(${heroPoster})`}}
-            aria-label="Фон з красивими квітами GURT"
-          />
-        )}
+        <div 
+          className="w-full h-full bg-gradient-to-br from-purple-900 via-pink-800 to-orange-700"
+          aria-label="Фон з красивими квітами GURT"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/40" />
       </div>
 
