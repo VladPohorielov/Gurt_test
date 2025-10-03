@@ -39,13 +39,18 @@ jobs:
       - name: Add .nojekyll file
         run: touch dist/.nojekyll
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+      - name: Copy dist to root for GitHub Pages (branch deployment)
+        run: |
+          cp -r dist/* .
+          rm -rf dist
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: "./dist"
+      - name: Commit and push to main
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git diff --staged --quiet || git commit -m "Deploy: Update GitHub Pages files [skip ci]"
+          git push
 
   deploy:
     needs: build

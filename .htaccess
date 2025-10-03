@@ -1,0 +1,16 @@
+# Enable MIME type for video files
+AddType video/mp4 .mp4
+AddType video/webm .webm
+
+# Enable compression for video files (optional)
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE video/mp4
+    AddOutputFilterByType DEFLATE video/webm
+</IfModule>
+
+# Cache video files for better performance
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType video/mp4 "access plus 1 month"
+    ExpiresByType video/webm "access plus 1 month"
+</IfModule>
