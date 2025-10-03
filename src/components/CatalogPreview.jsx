@@ -30,7 +30,7 @@ function ProductCard({ product }) {
     <div className="glass rounded-2xl overflow-hidden group">
       <Link to={`/product/${product.id}`} className="block relative">
         <img 
-          src={product.img} 
+          src={`${import.meta.env.BASE_URL}${product.img.replace(/^\//, '')}`} 
           alt={product.title}
           className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
         />
@@ -101,13 +101,13 @@ export default function CatalogPreview() {
           <div className="relative h-64">
             <video 
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              src="/video/hero.mp4" 
+              src={`${import.meta.env.BASE_URL}video/hero.mp4`} 
               autoPlay 
               muted 
               playsInline 
               loop
             >
-              <source src="/video/hero.mp4" type="video/mp4" />
+              <source src={`${import.meta.env.BASE_URL}video/hero.mp4`} type="video/mp4" />
             </video>
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             

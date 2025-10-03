@@ -64,7 +64,7 @@ export default function About(){
           <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
             {data.team.map(p=>(
               <article key={p.name} className="glass p-4 rounded-2xl">
-                <img src={p.img} alt={p.name} width="480" height="480"
+                <img src={`${import.meta.env.BASE_URL}${p.img.replace(/^\//, '')}`} alt={p.name} width="480" height="480"
                      className="h-56 w-full object-cover rounded-xl" loading="lazy"/>
                 <div className="mt-3">
                   <div className="text-white font-medium">{p.name}</div>
@@ -106,7 +106,7 @@ export default function About(){
           <H2>Живі роботи</H2>
           <div className="grid gap-3 grid-cols-2 md:grid-cols-3">
             {data.gallery.map((src,i)=>(
-              <img key={i} src={src} alt={`Букет ${i+1}`} width="800" height="600"
+              <img key={i} src={`${import.meta.env.BASE_URL}${src.replace(/^\//, '')}`} alt={`Букет ${i+1}`} width="800" height="600"
                    className="rounded-xl object-cover h-40 md:h-56" loading="lazy"/>
             ))}
           </div>

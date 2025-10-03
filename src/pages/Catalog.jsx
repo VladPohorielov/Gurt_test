@@ -70,9 +70,12 @@ export default function Catalog() {
           <div key={product.id} className="glass rounded-2xl overflow-hidden">
             <Link to={`/product/${product.id}`}>
               <img 
-                src={product.img} 
+                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" 
+                src={`${import.meta.env.BASE_URL}${product.img.replace(/^\//, '')}`} 
                 alt={product.title}
-                className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                width="400"
+                height="256"
               />
             </Link>
             

@@ -66,7 +66,7 @@ export default function Product() {
         <div className="relative">
           <div className="glass rounded-2xl overflow-hidden">
             <img 
-              src={product.img} 
+              src={`${import.meta.env.BASE_URL}${product.img.replace(/^\//, '')}`} 
               alt={product.title}
               className="w-full h-96 md:h-[500px] object-cover"
             />
@@ -190,7 +190,7 @@ export default function Product() {
                 className="glass rounded-xl overflow-hidden group hover:scale-105 transition-transform"
               >
                 <img 
-                  src={relatedProduct.img} 
+                  src={`${import.meta.env.BASE_URL}${relatedProduct.img.replace(/^\//, '')}`} 
                   alt={relatedProduct.title}
                   className="w-full h-48 object-cover"
                 />

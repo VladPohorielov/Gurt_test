@@ -8,7 +8,7 @@ export default function ModernApproach() {
             {/* Video Background */}
             <video 
               className="w-full h-full object-cover"
-              src="/video/hero.mp4" 
+              src={`${import.meta.env.BASE_URL}video/hero.mp4`} 
               autoPlay 
               muted 
               playsInline 
@@ -16,7 +16,7 @@ export default function ModernApproach() {
               onError={(e) => console.error('Studio video load error:', e)}
               aria-label="Відео нашої квіткової студії в стилі Instagram Reels"
             >
-              <source src="/video/hero.mp4" type="video/mp4" />
+              <source src={`${import.meta.env.BASE_URL}video/hero.mp4`} type="video/mp4" />
               Ваш браузер не підтримує відео.
             </video>
             
