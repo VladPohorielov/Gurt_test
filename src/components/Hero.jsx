@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 
 export default function Hero(){
   const [mounted, setMounted] = useState(false)
+  const [videoError, setVideoError] = useState(false)
 
   useEffect(() => {
     setMounted(true)
@@ -13,22 +14,32 @@ export default function Hero(){
     <header className="relative mx-auto max-w-6xl text-center overflow-hidden rounded-2xl min-h-[80vh]">
       {/* Video BG - Instagram Reels Style */}
       <div className="absolute inset-0 -z-10">
-        {/* Use Vite base URL so asset paths work when app is deployed to a subpath */}
-        <video
-          className="w-full h-full object-cover"
-          src={`${import.meta.env.BASE_URL}video/hero.mp4`}
-          poster={`${import.meta.env.BASE_URL}img/hero-poster.webp`}
-          autoPlay
-          muted
-          playsInline
-          loop
-          onError={(e) => console.error('Video load error:', e, `${import.meta.env.BASE_URL}video/hero.mp4`)}
-          onLoadedData={() => console.log('Video loaded successfully')}
-          aria-label="Відео-фон з красивими квітами GURT"
-        >
-          <source src={`${import.meta.env.BASE_URL}video/hero.mp4`} type="video/mp4" />
-          Ваш браузер не підтримує відео.
-        </video>
+        {!videoError ? (
+          <video
+            className="w-full h-full object-cover"
+            src={`${import.meta.env.BASE_URL}video/hero.mp4`}
+            poster={`${import.meta.env.BASE_URL}img/hero-poster.webp`}
+            autoPlay
+            muted
+            playsInline
+            loop
+            onError={(e) => {
+              console.error('Video load error:', e, `${import.meta.env.BASE_URL}video/hero.mp4`)
+              setVideoError(true)
+            }}
+            onLoadedData={() => console.log('Video loaded successfully')}
+            aria-label="Відео-фон з красивими квітами GURT"
+          >
+            <source src={`${import.meta.env.BASE_URL}video/hero.mp4`} type="video/mp4" />
+            Ваш браузер не підтримує відео.
+          </video>
+        ) : (
+          <div 
+            className="w-full h-full bg-cover bg-center bg-no-repeat"
+            style={{backgroundImage: `url(${import.meta.env.BASE_URL}img/hero-poster.webp)`}}
+            aria-label="Фон з красивими квітами GURT"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/40" />
       </div>
 

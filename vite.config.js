@@ -10,10 +10,21 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
+    // Increase asset size limit for video files
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
         manualChunks: undefined,
+        // Keep video files separate to avoid bundle size issues
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name && assetInfo.name.endsWith('.mp4')) {
+            return 'video/[name][extname]'
+          }
+          return 'assets/[name]-[hash][extname]'
+        }
       },
     },
-  }
+  },
+  // Ensure video files are copied to dist
+  assetsInclude: ['**/*.mp4']
 })
