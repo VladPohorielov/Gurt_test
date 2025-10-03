@@ -6,11 +6,13 @@ import { CartProvider } from './context/CartContext.jsx'
 import App from './App.jsx'
 import './index.css'
 
+const BASENAME = import.meta.env.BASE_URL || '/Gurt_test/'
+
 const root = createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <CartProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={BASENAME}>
         <App />
       </BrowserRouter>
     </CartProvider>

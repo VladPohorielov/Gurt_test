@@ -8,6 +8,12 @@ export default defineConfig({
   base: '/Gurt_test/',
   plugins: [react()],
   build: {
-    outDir: 'dist'
+    outDir: 'dist',
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
   }
 })
