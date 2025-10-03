@@ -1,0 +1,111 @@
+@import "leaflet/dist/leaflet.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background: #0a0a0a;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+}
+
+.glass {
+  @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+}
+
+.hr {
+  @apply h-px w-full bg-white/10;
+}
+
+.container {
+  @apply mx-auto max-w-6xl px-5;
+}
+
+/* Utility classes for text truncation */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* GURT Stroke Animation Effect */
+.gurt-text {
+  color: transparent;
+  -webkit-text-stroke: 3px #ffd400;
+  animation: gurt-stroke-fill 3s ease-in-out infinite;
+  text-shadow: 0 0 20px rgba(255, 212, 0, 0.3);
+  letter-spacing: 0.1em;
+  filter: drop-shadow(0 0 15px rgba(255, 212, 0, 0.4));
+}
+
+@keyframes gurt-stroke-fill {
+  0% {
+    -webkit-text-stroke: 3px #ffd400;
+    color: transparent;
+    filter: drop-shadow(0 0 10px rgba(255, 212, 0, 0.3));
+  }
+  50% {
+    -webkit-text-stroke: 2px #ffd400;
+    color: rgba(255, 212, 0, 0.3);
+    filter: drop-shadow(0 0 20px rgba(255, 212, 0, 0.6));
+  }
+  100% {
+    -webkit-text-stroke: 3px #ffd400;
+    color: transparent;
+    filter: drop-shadow(0 0 10px rgba(255, 212, 0, 0.3));
+  }
+}
+
+/* Additional animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Drop shadow glow effect */
+.drop-shadow-glow {
+  filter: drop-shadow(0 0 10px rgba(255, 212, 0, 0.3));
+}
+
+/* Leaflet custom pin styles */
+.leaflet-div-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+.custom-pin {
+  background: transparent !important;
+  border: none !important;
+}

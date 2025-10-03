@@ -1,0 +1,38 @@
+[
+  {
+    "id": "komarova",
+    "title": "Квіти Одеса / Цветы Одесса — Комарова",
+    "address": "вул. Михайла Комарова 10 (через АЗК ОККО)",
+    "altAddress": "Kosmonavta Komarova 10, Odessa, Ukraine 65000",
+    "phone": "+380637027770",
+    "lat": 46.4299,
+    "lng": 30.7120
+  },
+  {
+    "id": "shevchenko",
+    "title": "Квіти Одеса — пр. Шевченка",
+    "address": "пр. Шевченко 19/21",
+    "altAddress": "Shevchenko Avenue 19/21, Odessa, Ukraine",
+    "phone": "+380637027770",
+    "lat": 46.4387,
+    "lng": 30.7489
+  },
+  {
+    "id": "korolyova",
+    "title": "Квіти Одеса — Корольова",
+    "address": "вул. Академіка Корольова 43Е",
+    "altAddress": "Akademika Korolyova Street 43E, Odessa, Ukraine",
+    "phone": "+380637027770",
+    "lat": 46.3968,
+    "lng": 30.7123
+  },
+  {
+    "id": "chubaivska",
+    "title": "Квіти Одеса — Чубаївська, ЖК Ітака",
+    "address": "вул. Чубаївська 1, ЖК «Ітака»",
+    "altAddress": "Chubaivska Street 1, Itaka Complex, Odessa, Ukraine",
+    "phone": "+380637027770",
+    "lat": 46.4273,
+    "lng": 30.7342
+  }
+]
