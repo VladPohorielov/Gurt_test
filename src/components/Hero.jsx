@@ -10,14 +10,41 @@ export default function Hero(){
     setMounted(true)
   }, [])
 
+  // Правильні шляхи для GitHub Pages
+  const videoSrc = `${import.meta.env.BASE_URL}video/hero.mp4`
+  const posterSrc = `${import.meta.env.BASE_URL}img/hero-poster.webp`
+
   return (
     <header className="relative mx-auto max-w-6xl text-center overflow-hidden rounded-2xl min-h-[80vh]">
-      {/* Temporary fallback background */}
+      {/* Video BG - відновлено з правильними шляхами */}
       <div className="absolute inset-0 -z-10">
-        <div 
-          className="w-full h-full bg-gradient-to-br from-purple-900 via-pink-800 to-orange-700"
-          aria-label="Фон з красивими квітами GURT"
-        />
+        {!videoError ? (
+          <video
+            className="w-full h-full object-cover"
+            src={videoSrc}
+            poster={posterSrc}
+            autoPlay
+            muted
+            playsInline
+            loop
+            preload="metadata"
+            onError={(e) => {
+              console.error('Video load error:', videoSrc)
+              setVideoError(true)
+            }}
+            onLoadedData={() => console.log('Video loaded successfully:', videoSrc)}
+            aria-label="Відео-фон з красивими квітами GURT"
+          >
+            <source src={videoSrc} type="video/mp4" />
+            Ваш браузер не підтримує відео.
+          </video>
+        ) : (
+          <div 
+            className="w-full h-full bg-cover bg-center bg-no-repeat"
+            style={{backgroundImage: `url(${posterSrc})`}}
+            aria-label="Фон з красивими квітами GURT"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/40" />
       </div>
 

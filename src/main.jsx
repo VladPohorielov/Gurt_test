@@ -6,8 +6,9 @@ import { CartProvider } from './context/CartContext.jsx'
 import App from './App.jsx'
 import './index.css'
 
-// Simplified for debugging
-const BASENAME = '/Gurt_test/'
+// Robust basename handling for GitHub Pages
+const BASENAME = import.meta.env.BASE_URL || '/Gurt_test/'
+console.log('Using basename:', BASENAME)
 
 const root = createRoot(document.getElementById('root'))
 root.render(
