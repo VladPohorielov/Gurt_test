@@ -10,11 +10,24 @@ import './index.css'
 const BASENAME = import.meta.env.BASE_URL || '/Gurt_test/'
 console.log('Using basename:', BASENAME)
 
+// Load integration tests in development
+// if (import.meta.env.DEV) {
+//   import('./utils/testIntegration.js')
+//   import('./utils/warningChecker.js')
+//   import('./utils/lightRaysTest.js')
+// }
+
 const root = createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <CartProvider>
-      <BrowserRouter basename={BASENAME}>
+      <BrowserRouter 
+        basename={BASENAME}
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true
+        }}
+      >
         <App />
       </BrowserRouter>
     </CartProvider>

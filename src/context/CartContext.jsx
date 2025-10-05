@@ -1,4 +1,5 @@
 ﻿import { createContext, useContext, useReducer, useEffect } from 'react'
+import { useToast } from '@/hooks/use-toast'
 
 const CartContext = createContext()
 
@@ -42,6 +43,7 @@ const cartReducer = (state, action) => {
 
 export function CartProvider({ children }) {
   const [cartItems, dispatch] = useReducer(cartReducer, [])
+  const { toast } = useToast()
 
   // Load cart from localStorage on mount
   useEffect(() => {
@@ -61,6 +63,10 @@ export function CartProvider({ children }) {
   }, [cartItems])
 
   const addToCart = (product, size = '', quantity = 1) => {
+    const existingItem = cartItems.find(
+      item => item.id === product.id && item.size === size
+    )
+    
     dispatch({
       type: 'ADD_ITEM',
       payload: {
@@ -69,6 +75,13 @@ export function CartProvider({ children }) {
         quantity,
         cartId: `${product.id}-${size}`
       }
+    })
+
+    // Show toast notification
+    toast({
+      title: existingItem ? "Кількість оновлено" : "Додано в кошик",
+      description: `${product.title}${size ? ` (${size})` : ''}`,
+      duration: 3000,
     })
   }
 

@@ -1,11 +1,16 @@
-﻿export default function PaymentDelivery() {
+﻿import { FadeUp, FadeLeft, FadeRight, ScaleIn } from '../components/bits/ScrollAnimation'
+
+export default function PaymentDelivery() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-16">
-      <h1 className="text-3xl font-semibold text-white mb-8">Оплата і доставка</h1>
+      <FadeUp delay={0.2}>
+        <h1 className="text-3xl font-semibold text-white mb-8">Оплата і доставка</h1>
+      </FadeUp>
 
       <div className="grid md:grid-cols-2 gap-12">
-        <div>
-          <h2 className="text-2xl font-semibold text-brand-yellow mb-6">Доставка</h2>
+        <FadeLeft delay={0.4}>
+          <div>
+            <h2 className="text-2xl font-semibold text-brand-yellow mb-6">Доставка</h2>
           
           <div className="space-y-6">
             <div className="glass p-6">
@@ -38,10 +43,12 @@
               </div>
             </div>
           </div>
-        </div>
+          </div>
+        </FadeLeft>
 
-        <div>
-          <h2 className="text-2xl font-semibold text-brand-yellow mb-6">Оплата</h2>
+        <FadeRight delay={0.6}>
+          <div>
+            <h2 className="text-2xl font-semibold text-brand-yellow mb-6">Оплата</h2>
           
           <div className="space-y-6">
             <div className="glass p-6">
@@ -66,37 +73,40 @@
             </div>
           </div>
         </div>
+        </FadeRight>
       </div>
 
-      <div className="mt-16 glass p-8">
-        <h2 className="text-2xl font-semibold text-white mb-4">Важлива інформація</h2>
+      <ScaleIn delay={0.8}>
+        <div className="mt-16 glass p-8">
+          <h2 className="text-2xl font-semibold text-white mb-4">Важлива інформація</h2>
         
-        <div className="grid md:grid-cols-2 gap-8">
-          <div>
-            <h3 className="text-brand-yellow font-semibold mb-3"> Час оформлення</h3>
-            <p className="text-white/80 mb-4">
-              Замовлення приймаються цілодобово. Доставка здійснюється з 9:00 до 21:00.
-            </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-brand-yellow font-semibold mb-3"> Час оформлення</h3>
+              <p className="text-white/80 mb-4">
+                Замовлення приймаються цілодобово. Доставка здійснюється з 9:00 до 21:00.
+              </p>
+              
+              <h3 className="text-brand-yellow font-semibold mb-3"> Свіжість гарантована</h3>
+              <p className="text-white/80">
+                Всі квіти свіжі та високої якості. Гарантуємо збереження свіжості протягом 5-7 днів.
+              </p>
+            </div>
             
-            <h3 className="text-brand-yellow font-semibold mb-3"> Свіжість гарантована</h3>
-            <p className="text-white/80">
-              Всі квіти свіжі та високої якості. Гарантуємо збереження свіжості протягом 5-7 днів.
-            </p>
-          </div>
-          
-          <div>
-            <h3 className="text-brand-yellow font-semibold mb-3"> Підтвердження замовлення</h3>
-            <p className="text-white/80 mb-4">
-              Після оформлення замовлення ми зв\'яжемося з вами для підтвердження протягом 30 хвилин.
-            </p>
-            
-            <h3 className="text-brand-yellow font-semibold mb-3"> Заміна квітів</h3>
-            <p className="text-white/80">
-              Якщо деяких квітів немає в наявності, ми можемо замінити їх на аналогічні за якістю та ціною.
-            </p>
+            <div>
+              <h3 className="text-brand-yellow font-semibold mb-3"> Підтвердження замовлення</h3>
+              <p className="text-white/80 mb-4">
+                Після оформлення замовлення ми зв\'яжемося з вами для підтвердження протягом 30 хвилин.
+              </p>
+              
+              <h3 className="text-brand-yellow font-semibold mb-3"> Заміна квітів</h3>
+              <p className="text-white/80">
+                Якщо деяких квітів немає в наявності, ми можемо замінити їх на аналогічні за якістю та ціною.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </ScaleIn>
     </section>
   )
 }

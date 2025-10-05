@@ -2,6 +2,7 @@
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
+import { Toaster } from '@/components/ui/toaster'
 import Home from './pages/Home.jsx'
 import Catalog from './pages/Catalog.jsx'
 import Product from './pages/Product.jsx'
@@ -26,6 +27,7 @@ export default function App(){
           <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
+        <Toaster />
       </main>
   )
 }

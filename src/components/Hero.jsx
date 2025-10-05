@@ -1,82 +1,84 @@
 
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { lazy, Suspense } from 'react'
+import { FadeUp, FadeDown, ScaleIn } from './bits/ScrollAnimation'
 
-export default function Hero(){
-  const [mounted, setMounted] = useState(false)
-  const [videoError, setVideoError] = useState(false)
+// Ледачий імпорт Light Rays з резервним варіантом
+const LightRays = lazy(() => import('@/components/bits/LightRays').catch(() => 
+  import('@/components/bits/LightRaysFallback')
+))
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  // Правильні шляхи для GitHub Pages
-  const videoSrc = `${import.meta.env.BASE_URL}video/hero.mp4`
-  const posterSrc = `${import.meta.env.BASE_URL}img/hero-poster.webp`
-
+export default function Hero() {
   return (
-    <header className="relative mx-auto max-w-6xl text-center overflow-hidden rounded-2xl min-h-[80vh]">
-      {/* Video BG - відновлено з правильними шляхами */}
-      <div className="absolute inset-0 -z-10">
-        {!videoError ? (
-          <video
-            className="w-full h-full object-cover"
-            src={videoSrc}
-            poster={posterSrc}
-            autoPlay
-            muted
-            playsInline
-            loop
-            preload="metadata"
-            onError={(e) => {
-              console.error('Video load error:', videoSrc)
-              setVideoError(true)
-            }}
-            onLoadedData={() => console.log('Video loaded successfully:', videoSrc)}
-            aria-label="Відео-фон з красивими квітами GURT"
-          >
-            <source src={videoSrc} type="video/mp4" />
-            Ваш браузер не підтримує відео.
-          </video>
-        ) : (
-          <div 
-            className="w-full h-full bg-cover bg-center bg-no-repeat"
-            style={{backgroundImage: `url(${posterSrc})`}}
-            aria-label="Фон з красивими квітами GURT"
+    <section className="relative overflow-hidden bg-zinc-950">
+      {/* Фон під контентом */}
+      <div className="absolute inset-0 z-0">
+        <Suspense fallback={<div className="absolute inset-0 bg-gradient-to-br from-zinc-800/20 to-zinc-900/40" />}>
+          <LightRays 
+            raysOrigin="top-center"
+            raysColor="#FFD400"
+            raysSpeed={1.2}
+            lightSpread={0.8}
+            rayLength={1.5}
+            followMouse={true}
+            mouseInfluence={0.08}
+            noiseAmount={0.05}
+            distortion={0.02}
+            className="opacity-60"
           />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/40" />
+        </Suspense>
+        {/* Легка віньєтка/димка для збирання фону, дуже делікатно */}
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.0)_0%,rgba(0,0,0,0.30)_100%)]" />
       </div>
 
-      <div className="px-6 py-20 md:py-32 relative z-10">
-        <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 backdrop-blur-sm px-3 py-1 text-sm text-white/80">
-          <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow drop-shadow-glow animate-pulse" />
-          GURT • Flower Studio
-        </span>
+      {/* Контент зверху */}
+      <div className="relative z-10 container mx-auto px-4 py-16 sm:py-24 text-center">
+        {/* Бейдж-лого/назва — завжди світлий текст */}
+        <FadeDown delay={0.2}>
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/90 backdrop-blur">
+            <span className="h-2 w-2 rounded-full bg-amber-400" />
+            <span className="font-medium">GURT • Flower Studio</span>
+          </div>
+        </FadeDown>
 
-        {/* Animated GURT text effect */}
-        <div className="mt-8 mb-6">
-          <h1 className={`gurt-text text-6xl md:text-8xl font-bold text-white transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            GURT
-          </h1>
-        </div>
+        {/* Великий логотип GURT */}
+        <ScaleIn delay={0.4} duration={1.2}>
+          <div className="mt-8 mb-6">
+            <h1 className="text-6xl sm:text-8xl lg:text-9xl font-black tracking-tight text-white drop-shadow-2xl">
+              GURT
+            </h1>
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <span className="text-6xl sm:text-8xl lg:text-9xl font-black tracking-tight text-amber-400/20 blur-sm">
+                GURT
+              </span>
+            </div>
+          </div>
+        </ScaleIn>
 
-        <h2 className="text-2xl md:text-4xl font-medium leading-tight text-white mb-2">
-          Естетичні букети з <span className="text-brand-yellow drop-shadow-glow">вау-ефектом</span>
-        </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-white/90 text-lg">
-          Живі квіти, авторські композиції, доставка день-у-день. Онлайн-каталог, безпечна оплата, прозора логістика.
-        </p>
-        <div className="mt-8 flex justify-center gap-3 flex-wrap">
-          <Link to="/catalog" 
-             className="px-6 py-3 rounded-2xl bg-brand-yellow text-brand-black font-semibold hover:opacity-90 hover:scale-105 transition-all focus:outline focus:outline-2 focus:outline-brand-yellow/60"
-             aria-label="Переглянути каталог букетів GURT">Дивитися каталог</Link>
-          <Link to="/payment-and-delivery" 
-             className="px-6 py-3 rounded-2xl border border-white/30 text-white hover:bg-white/10 hover:scale-105 transition-all backdrop-blur-sm focus:outline focus:outline-2 focus:outline-brand-yellow/60"
-             aria-label="Інформація про оплату та доставку">Оплата та доставка</Link>
-        </div>
+        <FadeUp delay={0.6}>
+          <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white mb-4">
+            Квіти, що говорять замість слів
+          </h2>
+        </FadeUp>
+
+        <FadeUp delay={0.8}>
+          <p className="text-base sm:text-lg text-zinc-300 max-w-2xl mx-auto">
+            Доставка по Одесі за 1–2 години. Естетичні букети з вау-ефектом.
+          </p>
+        </FadeUp>
+
+        <FadeUp delay={1.0}>
+          <div className="mt-8 flex items-center justify-center gap-3">
+            <Link to="/catalog" className="rounded-xl bg-amber-500 text-black px-6 py-3 font-medium hover:bg-amber-400 transition-colors">
+              Обрати букет
+            </Link>
+            <Link to="/contact" className="rounded-xl border border-white/15 text-white px-6 py-3 font-medium hover:bg-white/10 transition-colors">
+              Зв'язатися
+            </Link>
+          </div>
+        </FadeUp>
       </div>
 
-    </header>
+    </section>
   );
 }

@@ -1,4 +1,11 @@
-﻿import data from "../data/about.json";
+﻿import data from "../data/about.json"
+import TextReveal from '@/components/ui/bits/TextReveal'
+import { Card, CardContent } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import TracingBeam from '@/components/ui/aceternity-tracing-beam'
+import GridPattern from '@/components/ui/magicui-grid-pattern'
+import GeminiEffect from '@/components/ui/aceternity-gemini-effect'
+import { FadeUp, FadeLeft, FadeRight, ScaleIn } from '../components/bits/ScrollAnimation'
 
 const Section = ({children}) => <section className="container mx-auto px-5 py-12 md:py-16">{children}</section>;
 const H2 = ({children, sub}) => (
@@ -10,23 +17,47 @@ const H2 = ({children, sub}) => (
 
 export default function About(){
   return (
-    <div className="min-h-screen bg-brand-black pt-20">
-      <main className="space-y-14 md:space-y-20">
+    <div className="min-h-screen bg-brand-black pt-20 relative">
+      {/* Grid Pattern Background */}
+      <GridPattern 
+        className="absolute inset-0 opacity-20"
+        width={50} 
+        height={50}
+        x={-1}
+        y={-1}
+      />
+      
+      {/* Tracing Beam with content */}
+      <TracingBeam>
+        <main className="space-y-14 md:space-y-20">
         {/* Intro + values */}
         <Section>
-          <H2 sub="GURT — студія любові та квітів. Ми створюємо букети, які дарують радість і запам'ятовуються надовго.">
-            Про нас
-          </H2>
-          <div className="grid gap-4 md:grid-cols-3">
+          <FadeUp delay={0.2}>
+            <H2>
+              Про нас
+            </H2>
+            <TextReveal className="text-lg md:text-xl text-white/90 max-w-4xl mb-8 leading-relaxed">
+              GURT — студія любові та квітів. Ми створюємо букети, які дарують радість і запам'ятовуються надовго. Кожна композиція — це історія, розказана мовою квітів.
+            </TextReveal>
+          </FadeUp>
+          <div className="grid gap-6 md:grid-cols-3">
             {[
               {t:"Місія", d:"Робити кожен момент особливим. Квіти — мова любові без перекладу."},
               {t:"Матеріали", d:"Лише свіжі квіти від перевірених постачальників, уважність до деталей."},
               {t:"Команда", d:"Досвідчені флористи й сервіс-менеджери перетворюють ідеї на шедеври."}
             ].map((v,i)=>(
-              <article key={i} className="glass p-5 rounded-2xl">
-                <h3 className="text-lg font-semibold text-brand-yellow">{v.t}</h3>
-                <p className="mt-2 text-white/80">{v.d}</p>
-              </article>
+              <FadeUp key={i} delay={0.4 + i * 0.2}>
+                <Card className="bg-white/5 border-white/10 text-white">
+                <CardContent className="p-6">
+                  <Badge className="mb-3 bg-brand-yellow text-brand-black">
+                    {v.t}
+                  </Badge>
+                  <TextReveal className="text-white/80 leading-relaxed">
+                    {v.d}
+                  </TextReveal>
+                </CardContent>
+              </Card>
+            </FadeUp>
             ))}
           </div>
         </Section>
@@ -60,8 +91,9 @@ export default function About(){
 
         {/* Team */}
         <Section>
-          <H2>Команда</H2>
-          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+          <GeminiEffect className="min-h-[400px] rounded-2xl bg-neutral-900/30">
+            <H2>Команда</H2>
+            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
             {data.team.map(p=>(
               <article key={p.name} className="glass p-4 rounded-2xl">
                 <img src={`${import.meta.env.BASE_URL}${p.img.replace(/^\//, '')}`} alt={p.name} width="480" height="480"
@@ -73,6 +105,7 @@ export default function About(){
               </article>
             ))}
           </div>
+          </GeminiEffect>
         </Section>
 
         {/* Process */}
@@ -130,6 +163,7 @@ export default function About(){
           </div>
         </Section>
       </main>
+      </TracingBeam>
     </div>
   );
 }

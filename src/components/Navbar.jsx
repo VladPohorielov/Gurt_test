@@ -1,7 +1,16 @@
 ﻿import { Link, NavLink } from 'react-router-dom'
 import { useState } from 'react'
+import { ShoppingCart, Menu } from 'lucide-react'
 import { useCart } from '../context/CartContext'
-import Cart from './Cart'
+import CartSheet from './CartSheet'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
 
 export default function Navbar(){
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -9,7 +18,7 @@ export default function Navbar(){
   const { getTotalItems } = useCart()
   
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-brand-black/80 border-b border-white/5">
+    <nav className="relative z-20 sticky top-0 backdrop-blur supports-[backdrop-filter]:bg-brand-black/80 border-b border-white/5">
       <div className="container flex items-center justify-between py-3">
         <Link to="/" className="font-semibold tracking-wide text-brand-yellow hover:opacity-80 transition-opacity focus:outline focus:outline-2 focus:outline-brand-yellow/60">
           GURT
@@ -31,34 +40,46 @@ export default function Navbar(){
           </NavLink>
         </div>
 
-        {/* Cart Icon - показується завжди */}
+        {/* Cart Icon - показується завжди */}  
         <div className="flex items-center gap-3">
-          <button
-            onClick={() => setIsCartOpen(true)}
-            className="relative p-2 text-white hover:text-brand-yellow transition-colors focus:outline focus:outline-2 focus:outline-brand-yellow/60 rounded-lg"
-            aria-label={`Кошик (${getTotalItems()} товарів)`}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 7.5H19.5M7 13v6a2 2 0 002 2h6a2 2 0 002-2v-6" />
-            </svg>
-            
-            {getTotalItems() > 0 && (
-              <span className="absolute -top-1 -right-1 bg-brand-yellow text-brand-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-                {getTotalItems()}
-              </span>
-            )}
-          </button>
+          <CartSheet isOpen={isCartOpen} onClose={() => setIsCartOpen(false)}>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm" 
+                    onClick={() => setIsCartOpen(true)}
+                    className="relative p-2 text-white hover:text-brand-yellow hover:bg-white/10"
+                    aria-label={`Відкрити кошик (${getTotalItems()} товарів)`}
+                  >
+                    <ShoppingCart className="w-5 h-5" />
+                    {getTotalItems() > 0 && (
+                      <Badge 
+                        variant="secondary" 
+                        className="absolute -top-1 -right-1 h-5 w-5 p-0 bg-brand-yellow text-brand-black text-xs font-bold flex items-center justify-center"
+                      >
+                        {getTotalItems()}
+                      </Badge>
+                    )}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Кошик ({getTotalItems()} товарів)</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </CartSheet>
 
           {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden p-2 text-white hover:text-brand-yellow transition-colors focus:outline focus:outline-2 focus:outline-brand-yellow/60 rounded-lg"
+          <Button
+            variant="ghost"
+            size="sm"
+            className="md:hidden p-2 text-white hover:text-brand-yellow hover:bg-white/10"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Відкрити меню"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+            <Menu className="w-5 h-5" />
+          </Button>
         </div>
       </div>
 
@@ -98,8 +119,7 @@ export default function Navbar(){
         </div>
       )}
       
-      {/* Cart Component */}
-      <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+
     </nav>
   )
 }
