@@ -4,9 +4,9 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 // Примітка деплою: при публікації на GitHub Pages під репозиторій
-// https://github.com/VladPohorielov/Gurt_test використовуємо відносні шляхи
+// https://github.com/VladPohorielov/Gurt_test встановіть base як '/Gurt_test/'
 export default defineConfig({
-  base: './',
+  base: '/Gurt_test/',
   plugins: [react()],
   resolve: {
     alias: {
