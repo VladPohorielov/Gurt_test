@@ -1,4 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
+import heroVideo from '@/assets/video/hero.mp4'
+import heroVideo from '@/assets/video/hero.mp4'
 
 export default function VideoSection() {
   const [currentVideo, setCurrentVideo] = useState(0)
@@ -6,17 +8,17 @@ export default function VideoSection() {
 
   const videos = [
     {
-      src: `${import.meta.env.BASE_URL}video/hero.mp4`,
+      src: heroVideo,
       title: 'Квіткові композиції',
       description: 'Подивіться, як наші флористи створюють справжні шедеври'
     },
     {
-      src: `${import.meta.env.BASE_URL}video/hero.mp4`,
+      src: heroVideo,
       title: 'Процес створення',
       description: 'Від ідеї до реалізації - кожен букет унікальний'
     },
     {
-      src: `${import.meta.env.BASE_URL}video/hero.mp4`,
+      src: heroVideo,
       title: 'Щасливі моменти',
       description: 'Квіти, які дарують радість і залишаються в пам’яті назавжди'
     }

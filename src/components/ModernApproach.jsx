@@ -1,5 +1,6 @@
 import { FadeUp, FadeLeft, FadeRight } from './bits/ScrollAnimation'
 import { useState } from 'react'
+import heroVideo from '@/assets/video/hero.mp4'
 
 export default function ModernApproach() {
   const [videoError, setVideoError] = useState(false)
@@ -14,7 +15,7 @@ export default function ModernApproach() {
             {!videoError ? (
               <video 
                 className="w-full h-full object-cover"
-                src={`${import.meta.env.BASE_URL}video/hero.mp4`} 
+                src={heroVideo} 
                 autoPlay 
                 muted 
                 playsInline 
@@ -25,7 +26,7 @@ export default function ModernApproach() {
                 }}
                 aria-label="Відео нашої квіткової студії в стилі Instagram Reels"
               >
-                <source src={`${import.meta.env.BASE_URL}video/hero.mp4`} type="video/mp4" />
+                <source src={heroVideo} type="video/mp4" />
                 Ваш браузер не підтримує відео.
               </video>
             ) : (

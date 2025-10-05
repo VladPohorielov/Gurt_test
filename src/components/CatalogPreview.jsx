@@ -4,6 +4,7 @@ import ProductCardNew from './ProductCardNew'
 import Masonry from './bits/Masonry'
 import FocusCards from '@/components/ui/aceternity-focus-cards'
 import { FadeUp, ScaleIn } from './bits/ScrollAnimation'
+import heroVideo from '@/assets/video/hero.mp4'
 
 // Показуємо більше товарів для кращого masonry ефекту
 const featuredProducts = data.slice(0, 12)
@@ -28,13 +29,13 @@ function PromoVideoCard() {
       <div className="relative aspect-[3/4] overflow-hidden">
         <video 
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          src={`${import.meta.env.BASE_URL}video/hero.mp4`} 
+          src={heroVideo} 
           autoPlay 
           muted 
           playsInline 
           loop
         >
-          <source src={`${import.meta.env.BASE_URL}video/hero.mp4`} type="video/mp4" />
+          <source src={heroVideo} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         
