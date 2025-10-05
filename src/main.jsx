@@ -6,8 +6,8 @@ import { CartProvider } from './context/CartContext.jsx'
 import App from './App.jsx'
 import './index.css'
 
-// Robust basename handling for GitHub Pages
-const BASENAME = import.meta.env.BASE_URL || '/Gurt_test/'
+// Robust basename handling for GitHub Pages  
+const BASENAME = import.meta.env.DEV ? '/Gurt_test/' : '/Gurt_test/'
 console.log('Using basename:', BASENAME)
 
 // Load integration tests in development
