@@ -21,6 +21,26 @@
     
     <link rel="icon" type="image/jpeg" href="gurt.jpg" />
     <title>GURT • Flower Studio - Естетичні букети з вау-ефектом</title>
+    
+    <!-- GitHub Pages SPA redirect script -->
+    <script type="text/javascript">
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname + decoded + l.hash
+          );
+        }
+      })(window.location);
+    </script>
   </head>
   <body>
     <div id="root"></div>
