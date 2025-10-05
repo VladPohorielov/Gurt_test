@@ -1,6 +1,8 @@
 import { FadeUp, FadeLeft, FadeRight } from './bits/ScrollAnimation'
+import { useState } from 'react'
 
 export default function ModernApproach() {
+  const [videoError, setVideoError] = useState(false)
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
       <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -8,20 +10,31 @@ export default function ModernApproach() {
         <FadeLeft delay={0.2}>
           <div className="relative flex justify-center lg:justify-start order-2 lg:order-1">
             <div className="relative w-80 h-[480px] md:w-96 md:h-[540px] rounded-3xl overflow-hidden bg-black shadow-2xl">
-            {/* Відео фон */}
-            <video 
-              className="w-full h-full object-cover"
-              src={`${import.meta.env.BASE_URL}video/hero.mp4`} 
-              autoPlay 
-              muted 
-              playsInline 
-              loop
-              onError={(e) => console.error('Studio video load error:', e)}
-              aria-label="Відео нашої квіткової студії в стилі Instagram Reels"
-            >
-              <source src={`${import.meta.env.BASE_URL}video/hero.mp4`} type="video/mp4" />
-              Ваш браузер не підтримує відео.
-            </video>
+            {/* Відео або fallback зображення */}
+            {!videoError ? (
+              <video 
+                className="w-full h-full object-cover"
+                src={`${import.meta.env.BASE_URL}video/hero.mp4`} 
+                autoPlay 
+                muted 
+                playsInline 
+                loop
+                onError={(e) => {
+                  console.error('Studio video load error:', e)
+                  setVideoError(true)
+                }}
+                aria-label="Відео нашої квіткової студії в стилі Instagram Reels"
+              >
+                <source src={`${import.meta.env.BASE_URL}video/hero.mp4`} type="video/mp4" />
+                Ваш браузер не підтримує відео.
+              </video>
+            ) : (
+              <img 
+                src={`${import.meta.env.BASE_URL}img/hero-poster.webp`}
+                alt="Квіткова студія GURT"
+                className="w-full h-full object-cover"
+              />
+            )}
             
             {/* Градієнтна накладка для кращої читабельності тексту */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20"></div>
