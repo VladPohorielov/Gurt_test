@@ -6,17 +6,17 @@ export default function VideoSection() {
 
   const videos = [
     {
-      src: '/video/hero.mp4',
+      src: `${import.meta.env.BASE_URL}video/hero.mp4`,
       title: 'Квіткові композиції',
       description: 'Подивіться, як наші флористи створюють справжні шедеври'
     },
     {
-      src: '/video/hero.mp4',
+      src: `${import.meta.env.BASE_URL}video/hero.mp4`,
       title: 'Процес створення',
       description: 'Від ідеї до реалізації - кожен букет унікальний'
     },
     {
-      src: '/video/hero.mp4',
+      src: `${import.meta.env.BASE_URL}video/hero.mp4`,
       title: 'Щасливі моменти',
       description: 'Квіти, які дарують радість і залишаються в пам’яті назавжди'
     }
